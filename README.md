@@ -8,7 +8,7 @@ DNAnexus Gaea workflow to support the Haem-Onc myeloid service
 
 |  App  | Version   |
 |--- |--- |
-|sentieon-umi   |1.0.0|
+|eggd_sentieon_umi   |1.0.0|
 |sentieon-tnbam|5.1.0|
 |verifybamid        |2.2.1|
 |picardqc           |1.4.0|
