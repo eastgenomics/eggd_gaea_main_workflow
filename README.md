@@ -1,25 +1,26 @@
-<!-- dx-header -->
-# AmazingApp (DNAnexus Platform App)
-This could be used as a starting point when developing new apps for DNAnexus
+# eggd_uranus_workflow (DNAnexus Platform Workflow)
 
-<!-- Insert a description of your app here -->
-## What does this app do?
-Provide a brief description of this tool.
+DNAnexus Uranus workflow to support the Haem-Onc myeloid service
 
-## What are the typical use cases for this app?
-Describe use cases of the app.
+---
 
-## What are the inputs?
-- list the required input files, specifying any formatting requirements
+![Image of workflow](images/full_uranus_practical.drawio.png)
 
-## What are the outputs?
-- list the expected output files, specifying the format
+## What apps are used in this workflow?
 
-## How to run this app from command line?
-```
-add an example command of running this app from the CLI \
-especially the (optional) inputs \
-and recommended istance_type
-```
-
-### This app was made by EMEE GLH
+|  App  | Version   |
+|--- |--- |
+|sentieon-bwa   |5.1.0|
+|sentieon-tnbam|5.1.0|
+|cgppindel          |1.2.0|
+|verifybamid        |2.2.1|
+|picardqc           |1.3.0|
+|samtools_flagstat  |1.1.0|
+|mosdepth           |1.1.0|
+|athena             |1.4.0|
+|sex_check          |1.1.0|
+|sompy              |1.0.5|
+|eggd_apheleia|1.0.1|
+|eggd_vep|1.3.0|
+|eggd_vcf_rescue|1.2.0|
+|eggd_generate_variant_workbook|2.11.1|
