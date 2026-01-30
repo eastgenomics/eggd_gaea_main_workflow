@@ -1,20 +1,17 @@
-# eggd_uranus_workflow (DNAnexus Platform Workflow)
+# eggd_gaea_workflow (DNAnexus Platform Workflow)
 
-DNAnexus Uranus workflow to support the Haem-Onc myeloid service
+DNAnexus Gaea workflow to support the Haem-Onc myeloid service
 
 ---
-
-![Image of workflow](images/full_uranus_practical.drawio.png)
 
 ## What apps are used in this workflow?
 
 |  App  | Version   |
 |--- |--- |
-|sentieon-bwa   |5.1.0|
+|sentieon-umi   |1.0.0|
 |sentieon-tnbam|5.1.0|
-|cgppindel          |1.2.0|
 |verifybamid        |2.2.1|
-|picardqc           |1.3.0|
+|picardqc           |1.4.0|
 |samtools_flagstat  |1.1.0|
 |mosdepth           |1.1.0|
 |athena             |1.4.0|
