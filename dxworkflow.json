@@ -1,0 +1,248 @@
+{
+  "name": "uranus_main_workflow_GRCh38_v3.3.0",
+  "title": "uranus_main_workflow_GRCh38_v3.3.0",
+  "summary": "Main workflow for Uranus pipeline",
+  "stages": [
+    {
+      "id": "stage-sentieon_bwa",
+      "executable": "app-sentieon-bwa/5.1.0",
+      "folder": "/sentieon_bam"
+    },
+    {
+      "id": "stage-sentieon_tnbam",
+      "executable": "app-sentieon-tnbam/5.1.0",
+      "folder": "/sentieon_vcfs",
+      "input": {
+        "mappings_bam": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-cgppindel",
+      "executable": "app-eggd_cgppindel/1.2.0",
+      "folder": "/eggd_cgppindel",
+      "input": {
+        "tumour": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-verifybamid",
+      "executable": "app-eggd_verifybamid/2.2.1",
+      "folder": "/verifybamid_v2.2.1",
+      "input": {
+        "input_bam_index": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam_bai",
+            "stage": "stage-sentieon_bwa"
+          }
+        },
+        "input_bam": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-picard",
+      "executable": "app-eggd_picard_QC/1.3.0",
+      "folder": "/eggd_picardqc_v1.3.0",
+      "input": {
+        "sorted_bam": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+            }
+          },
+          "vcf": {
+            "$dnanexus_link": {
+              "stage": "stage-sentieon_tnbam",
+              "outputField": "variants_vcf"
+            }
+          },
+          "vcf_index": {
+            "$dnanexus_link": {
+              "stage":"stage-sentieon_tnbam",
+              "outputField": "variants_vcftbi"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-flagstat",
+      "executable": "app-eggd_samtools_flagstat/1.1.0",
+      "folder": "/samtools_flagstat_v1.1.0",
+      "input": {
+        "input_bam_index": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam_bai",
+            "stage": "stage-sentieon_bwa"
+          }
+        },
+        "input_bam": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-mosdepth",
+      "executable": "app-eggd_mosdepth/1.1.0",
+      "folder": "/eggd_mosdepth_v1.1.0",
+      "input": {
+        "index": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam_bai",
+            "stage": "stage-sentieon_bwa"
+          }
+        },
+        "bam": {
+          "$dnanexus_link": {
+            "outputField": "mappings_bam",
+            "stage": "stage-sentieon_bwa"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-athena",
+      "executable": "app-eggd_athena/1.4.0",
+      "folder": "/eggd_athena_v1.4.0",
+      "input": {
+        "mosdepth_files": [
+          {
+            "$dnanexus_link": {
+              "stage": "stage-mosdepth",
+              "outputField": "mosdepth_output"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "stage-sex_check",
+      "executable": "app-eggd_sex_check/1.1.0",
+      "folder": "/eggd_sex_check",
+      "input": {
+        "input_bam": {
+          "$dnanexus_link": {
+            "stage": "stage-sentieon_bwa",
+            "outputField": "mappings_bam"
+          }
+        },
+        "index_file": {
+          "$dnanexus_link": {
+            "stage": "stage-sentieon_bwa",
+            "outputField": "mappings_bam_bai"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-sompy",
+      "executable": "app-eggd_sompy/1.0.5",
+      "folder": "/eggd_sompy_v1.0.5",
+      "input": {
+        "query_vcf": {
+          "$dnanexus_link": {
+            "outputField": "variants_vcf",
+            "stage": "stage-sentieon_tnbam"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-apheleia",
+      "executable": "app-eggd_apheleia/1.0.1",
+      "folder": "/eggd_apheleia",
+      "input": {
+        "exon_stats": {
+          "$dnanexus_link": {
+            "outputField": "exon_stats",
+            "stage": "stage-athena"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-eggd_vep_cgppindel",
+      "executable": "app-eggd_vep/1.3.0",
+      "folder": "/eggd_vep",
+      "input": {
+        "vcf": {
+          "$dnanexus_link": {
+            "stage": "stage-cgppindel",
+            "outputField": "output_vcf_with_vaf"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-eggd_vep_mutect2",
+      "executable": "app-eggd_vep/1.3.0",
+      "folder": "/eggd_vep",
+      "input": {
+        "vcf": {
+          "$dnanexus_link": {
+            "stage": "stage-sentieon_tnbam",
+            "outputField": "variants_vcf"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-eggd_vcf_rescue",
+      "executable": "app-eggd_vcf_rescue/1.2.0",
+      "folder": "/eggd_vcf_rescue",
+      "input": {
+        "filtered_vcf": {
+          "$dnanexus_link": {
+            "stage": "stage-eggd_vep_mutect2",
+            "outputField": "annotated_vcf"
+          }
+        },
+        "unfiltered_vcf": {
+          "$dnanexus_link": {
+            "stage": "stage-eggd_vep_mutect2",
+            "outputField": "annotated_vcf"
+          }
+        }
+      }
+    },
+    {
+      "id": "stage-eggd_generate_variant_workbook",
+      "executable": "app-eggd_generate_variant_workbook/2.11.1",
+      "folder": "/eggd_generate_variant_workbook",
+      "input": {
+        "vcfs": [
+          {
+            "$dnanexus_link": {
+              "stage": "stage-eggd_vcf_rescue",
+              "outputField": "output_vcf"
+            }
+          }
+        ],
+        "additional_files": [
+          {
+            "$dnanexus_link": {
+              "stage": "stage-eggd_vep_cgppindel",
+              "outputField": "annotated_vcf"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
