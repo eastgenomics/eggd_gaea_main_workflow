@@ -1,6 +1,6 @@
 {
-  "name": "gaea_main_workflow_1.1.0",
-  "title": "gaea_main_workflow_1.1.0",
+  "name": "gaea_main_workflow_1.0.0",
+  "title": "gaea_main_workflow_1.0.0",
   "summary": "Main workflow for Uranus pipeline",
   "stages": [
     {
