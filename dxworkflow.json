@@ -5,7 +5,7 @@
   "stages": [
     {
       "id": "stage-sentieon_umi",
-      "executable": "app-eggd_sentieon_umi/1.0.0",
+      "executable": "app-eggd_sentieon_umi/1.0.1",
       "folder": "/sentieon_bam"
     },
     {
