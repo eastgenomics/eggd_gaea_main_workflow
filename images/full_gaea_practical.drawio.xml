@@ -154,12 +154,6 @@
         <mxCell id="ZRLuNuVFItN3rF2Vi_rz-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Sompy:&lt;br&gt;&lt;/b&gt;Compares the control VCF to the truth VCF" vertex="1">
           <mxGeometry height="60" width="180" x="1757.0800000000004" y="10" as="geometry" />
         </mxCell>
-        <mxCell id="ZRLuNuVFItN3rF2Vi_rz-73" edge="1" parent="1" source="ZRLuNuVFItN3rF2Vi_rz-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZRLuNuVFItN3rF2Vi_rz-71">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="ZRLuNuVFItN3rF2Vi_rz-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Apheleia:&lt;br&gt;&lt;/b&gt;Predicts presence of PTDs in KMT2A gene" vertex="1">
-          <mxGeometry height="60" width="180" x="2041.58" y="-190" as="geometry" />
-        </mxCell>
         <mxCell id="ZRLuNuVFItN3rF2Vi_rz-68" edge="1" parent="1" source="ZRLuNuVFItN3rF2Vi_rz-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="N8RSXzmP1eGi0gbw34kW-30">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="2132" y="-380" as="targetPoint" />
@@ -182,9 +176,6 @@
         </mxCell>
         <mxCell id="ZRLuNuVFItN3rF2Vi_rz-70" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" value="&lt;p style=&quot;line-height: 120%;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;.html &lt;/b&gt;coverage report per sample&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="50" width="150.17" x="2280" y="-335" as="geometry" />
-        </mxCell>
-        <mxCell id="ZRLuNuVFItN3rF2Vi_rz-71" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" value="&lt;p style=&quot;line-height: 120%;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;b&gt;.tsv&lt;/b&gt;&amp;nbsp;apheleia report per sample&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="50" width="150.17" x="2280" y="-185" as="geometry" />
         </mxCell>
         <mxCell id="ZRLuNuVFItN3rF2Vi_rz-76" edge="1" parent="1" source="ZRLuNuVFItN3rF2Vi_rz-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="ZRLuNuVFItN3rF2Vi_rz-23">
           <mxGeometry relative="1" as="geometry">
@@ -222,9 +213,6 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1509.9999999999998" y="130" as="sourcePoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="N8RSXzmP1eGi0gbw34kW-33" edge="1" parent="1" source="N8RSXzmP1eGi0gbw34kW-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="ZRLuNuVFItN3rF2Vi_rz-21">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="N8RSXzmP1eGi0gbw34kW-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" value="&lt;p style=&quot;line-height: 120%;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;.&lt;b&gt;tsv&lt;/b&gt;&amp;nbsp;Exon stats per sample&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="50" width="150.17" x="2056.5" y="-260" as="geometry" />
