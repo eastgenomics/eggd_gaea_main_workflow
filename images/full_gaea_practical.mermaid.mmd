@@ -1,0 +1,57 @@
+flowchart LR
+    classDef input fill:#d5e8d4,stroke:#82b366,color:#1a1a1a;
+    classDef process fill:#dae8fc,stroke:#6c8ebf,color:#1a1a1a;
+    classDef data fill:#fff2cc,stroke:#d6b656,color:#1a1a1a;
+    classDef external fill:#f5f5f5,stroke:#666666,color:#1a1a1a,stroke-dasharray: 5 5;
+
+    fastq["<b>.fastq</b><br/>demultiplexed sample reads"]:::input
+    bwa["<b>Sentieon BWA-MEM (UMI)</b><br/>Perform BWA alignment with UMI pre-processing"]:::process
+    bam["<b>.bam</b><br/>sequence alignment"]:::data
+    tnhap["<b>Sentieon Somatic tnhaplotyper2</b><br/>Performs somatic variant calling for small variants"]:::process
+    vcf["<b>.vcf</b><br/>small variants"]:::data
+    vep["<b>VEP</b><br/>Annotation and filtering of variants to ROI"]:::process
+    rescue["<b>VCF Rescue</b><br/>Filters out low quality variants and rescues whitelist variants"]:::process
+    workbook["<b>Generate Variant Workbook</b><br/>Generates excel reports"]:::process
+    xlsx["<b>.xlsx</b><br/>reports workflow for scientists"]:::data
+
+    fastqc["<b>Multi FastQC</b><br/>Performs simple quality control checks on raw data"]:::external
+    mosdepth["<b>Mosdepth</b><br/>Calculates per-base coverages"]:::process
+    flagstat["<b>Samtools Flagstat</b><br/>Quantify number of alignments for each FLAG field in .bam"]:::process
+    picard["<b>Picard QC</b><br/>QC for mapped reads"]:::process
+    verifybamid["<b>VerifyBamID</b><br/>Detects sample contamination"]:::process
+    sompy["<b>Sompy</b><br/>Compares the control VCF to the truth VCF<br/><i>(control samples only)</i>"]:::process
+    sexcheck["<b>Sex check</b><br/>Calculates sex check scores using the coverage metric"]:::process
+    athena["<b>Athena</b><br/>Generate coverage reports of genomic regions"]:::process
+    multiqc["<b>MultiQC</b><br/>Aggregates QC results and compiles a .html report"]:::external
+
+    htmlqc["<b>.html</b><br/>QC report of run"]:::data
+    htmlcov["<b>.html</b><br/>coverage report per sample"]:::data
+    tsvexon["<b>.tsv</b><br/>Exon stats per sample"]:::data
+
+    fastq --> bwa
+    fastq --> fastqc
+    bwa --> bam
+    bam --> tnhap
+    bam --> mosdepth
+    bam --> flagstat
+    bam --> picard
+    bam --> verifybamid
+    bam --> sexcheck
+    tnhap --> vcf
+    vcf --> sompy
+    vcf --> picard
+    vcf --> vep
+    vep --> rescue
+    rescue --> workbook
+    workbook --> xlsx
+
+    fastqc -.-> multiqc
+    flagstat --> multiqc
+    picard --> multiqc
+    verifybamid --> multiqc
+    sompy --> multiqc
+    sexcheck --> multiqc
+    mosdepth --> athena
+    athena --> tsvexon
+    athena --> htmlcov
+    multiqc --> htmlqc

@@ -1,11 +1,11 @@
 {
-  "name": "gaea_main_workflow_1.0.0",
-  "title": "gaea_main_workflow_1.0.0",
+  "name": "gaea_main_workflow_1.1.0",
+  "title": "gaea_main_workflow_1.1.0",
   "summary": "Main workflow for Gaea pipeline",
   "stages": [
     {
       "id": "stage-sentieon_umi",
-      "executable": "app-eggd_sentieon_umi/1.0.0",
+      "executable": "app-eggd_sentieon_umi/1.0.1",
       "folder": "/sentieon_bam"
     },
     {
@@ -49,18 +49,18 @@
           "$dnanexus_link": {
             "outputField": "mappings_bam",
             "stage": "stage-sentieon_umi"
-            }
-          },
-          "vcf": {
-            "$dnanexus_link": {
-              "stage": "stage-sentieon_tnbam",
-              "outputField": "variants_vcf"
-            }
-          },
-          "vcf_index": {
-            "$dnanexus_link": {
-              "stage":"stage-sentieon_tnbam",
-              "outputField": "variants_vcftbi"
+          }
+        },
+        "vcf": {
+          "$dnanexus_link": {
+            "stage": "stage-sentieon_tnbam",
+            "outputField": "variants_vcf"
+          }
+        },
+        "vcf_index": {
+          "$dnanexus_link": {
+            "stage": "stage-sentieon_tnbam",
+            "outputField": "variants_vcftbi"
           }
         }
       }
@@ -146,19 +146,6 @@
           "$dnanexus_link": {
             "outputField": "variants_vcf",
             "stage": "stage-sentieon_tnbam"
-          }
-        }
-      }
-    },
-    {
-      "id": "stage-apheleia",
-      "executable": "app-eggd_apheleia/1.0.1",
-      "folder": "/eggd_apheleia",
-      "input": {
-        "exon_stats": {
-          "$dnanexus_link": {
-            "outputField": "exon_stats",
-            "stage": "stage-athena"
           }
         }
       }
