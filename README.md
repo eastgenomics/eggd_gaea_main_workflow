@@ -4,6 +4,14 @@ DNAnexus Gaea workflow to support the Haem-Onc myeloid service
 
 ---
 
+## Workflow diagram
+
+![Gaea workflow diagram](images/full_gaea_practical.mermaid.png)
+
+Editable diagram source: [full_gaea_practical.mermaid.mmd](images/full_gaea_practical.mermaid.mmd)
+
+---
+
 ## What apps are used in this workflow?
 
 |  App  | Version   |
