@@ -19,7 +19,7 @@ flowchart LR
     flagstat["<b>Samtools Flagstat</b><br/>Quantify number of alignments for each FLAG field in .bam"]:::process
     picard["<b>Picard QC</b><br/>QC for mapped reads"]:::process
     verifybamid["<b>VerifyBamID</b><br/>Detects sample contamination"]:::process
-    sompy["<b>Sompy</b><br/>Compares the control VCF to the truth VCF"]:::process
+    sompy["<b>Sompy</b><br/>Compares the control VCF to the truth VCF<br/><i>(control samples only)</i>"]:::process
     sexcheck["<b>Sex check</b><br/>Calculates sex check scores using the coverage metric"]:::process
     athena["<b>Athena</b><br/>Generate coverage reports of genomic regions"]:::process
     multiqc["<b>MultiQC</b><br/>Aggregates QC results and compiles a .html report"]:::external
